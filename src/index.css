@@ -1,0 +1,63 @@
+
+html {
+  font-size: 100%;
+}
+body, #root, #root>div,.container {
+  height: 100% !important;
+}
+
+body {
+
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+h1, h2, p {
+  font-family: 'Quicksand', sans-serif;
+}
+.ldg-header {
+  font-weight: bold;
+  margin: 0px;
+}
+.ldg-title-div {
+  margin: 15px 0 15px 0;
+}
+.ldg-sub-header {
+  color: #9f9797;
+}
+.ldg-date-text {
+  color: #9f9797;
+}
+.ldg-title {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+.ldg-address-form-container {
+  margin: 80px 15px 15px 15px;
+}
+.ldg-container {
+    overflow-y: auto;
+    height: 100vh;
+}
+.ldg-table-container {
+  margin: 80px 15px 15px 15px;
+}
+.ldg-table-body {
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.ldg-positive_fluctuation {
+  font-weight: bold;
+}
+.ldg-navbar-menu {
+  border-radius: 0 !important;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.ldg-notification-banner-container {
+  margin-top: 63px;
+}

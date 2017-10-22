@@ -1,0 +1,18 @@
+{
+	"router": [],
+	"configState": {
+		"navBarMenu": {
+			"activeItem": "home"
+		},
+		"toggleAddressForm": false
+		
+	},
+	"bitcoinAddressInfo": {
+		"address": "",
+		"balance": 0,
+		"transactions": [],
+		"column": null,
+		"direction": null
+	},
+	"notifications": []
+}

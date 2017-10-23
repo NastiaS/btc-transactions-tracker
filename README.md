@@ -17,6 +17,8 @@ npm install
 ```
 npm start
 ```
+When running on the localhost you might hit a CORS issue. One way to overcome this is to use a Chrome extension: Allow-Control-Allow-Origin: * that eliminates this problem and can be sufficient for local dev testing purposes.
+
 4) To open it as an electron app run:
 ```
 npm run build

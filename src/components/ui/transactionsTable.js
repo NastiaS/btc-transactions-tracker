@@ -38,8 +38,8 @@ const TransactionsTable = props => (
 							</Table.Cell>
 							<Table.Cell textAlign="right">
 								<div>
-									<p className={(dataPoint.isInput) ? 'ldg-positive_fluctuation' : 'ldg-negative-fluctuation'}>
-									<Icon name={(dataPoint.isInput) ? 'caret up' : 'caret down'} color={(dataPoint.isInput) ? 'green' : 'red'} /> BTC {dataPoint.value.toFixed(4)} 											
+									<p className={(dataPoint.value>=0) ? 'ldg-positive_fluctuation' : 'ldg-negative-fluctuation'}>
+									<Icon name={(dataPoint.value<0) ? 'caret up' : 'caret down'} color={(dataPoint.value>=0) ? 'green' : 'red'} /> BTC {dataPoint.value.toFixed(4)} 											
 									</p>
 								</div>
 							</Table.Cell>

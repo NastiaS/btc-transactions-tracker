@@ -14,7 +14,7 @@ const mapStateToProps = (state, props) =>
 
 const mapDispatchToProps = dispatch =>
 	({
-	 	toggleAddressForm () {
+		toggleAddressForm () {
 			dispatch(
 				clearAddressForm()
 			)
@@ -23,23 +23,24 @@ const mapDispatchToProps = dispatch =>
 			)
 		},
 		handleSort (clickedColumn, bitcoinAddressInfo)  {
-
-		    if (bitcoinAddressInfo.column !== clickedColumn) {
-		    	dispatch(
-		    		updateTableSortOrder({
-		    			column: clickedColumn,
-		    			data: _.sortBy(bitcoinAddressInfo.transactions, [clickedColumn]),
-		    			direction: 'ascending'
-		    		})
-		    	)
-		    } 
-	    	dispatch(
-	    		performTableSort({
-	    			data: bitcoinAddressInfo.transactions.reverse(),
-  					direction: bitcoinAddressInfo.direction === 'ascending' ? 'descending' : 'ascending',
-	    		})
-	    	)
-	   	}
+			if (bitcoinAddressInfo.column !== clickedColumn) {
+				dispatch(
+					updateTableSortOrder({
+						column: clickedColumn,
+						data: _.sortBy(bitcoinAddressInfo.transactions, [clickedColumn]),
+						direction: 'ascending'
+					})
+				)
+			}else{
+				dispatch(
+					performTableSort({
+						data: bitcoinAddressInfo.transactions.reverse(),
+						direction: bitcoinAddressInfo.direction === 'ascending' ? 'descending' : 'ascending',
+					})
+				)
+			} 
+			
+		}
 	})
 
 const Container = connect(

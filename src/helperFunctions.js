@@ -2,20 +2,18 @@ import C from './constants'
 
 let addressData = {
 	relevantData: [],
-	balance: 5
+	balance: 0
 };
 
-const transformValue = (value, inputBool) => {
-	value = inputBool ? value / (Math.pow(10, 8)) : -(value / (Math.pow(10, 8)));
+const transformValue = (value) => {
+	value =  value / (Math.pow(10, 8)) 
 	addressData.balance += value;
 	return value;
 };
 
-const constructJSON = (inputBool, el, value) => {
+const constructJSON = (el, value) => {
 	let dataPoint = {
-		"isInput" : inputBool,
-		"isOutput": !inputBool,
-		"value": transformValue(value, inputBool),
+		"value": transformValue(value),
 		"date": el.received_at,
 		"hash": el.hash
 	};
@@ -24,23 +22,21 @@ const constructJSON = (inputBool, el, value) => {
 
 export const processData = (data, address) => {
 	data.map((el) => {
-		let totalValue = 0, isRelevant = false, isInput = false;
+		let totalValue = 0, isRelevant = false;
 		el.inputs.map((input_el) => {
 			if (input_el.address.match(address)) {
 				isRelevant = true;
-				isInput = true;
-				totalValue += input_el.value;
+				totalValue -= input_el.value;
 			}
 		});
 		el.outputs.map((output_el) => {
 			if (output_el.address.match(address)){
 				isRelevant = true;
-				isInput = false;
 				totalValue += output_el.value;
 			}
 		});
 		isRelevant ? 
-			addressData.relevantData.push(constructJSON(isInput, el, totalValue)) : null;
+			addressData.relevantData.push(constructJSON(el, totalValue)) : null;
 	});
 	return addressData;
 }

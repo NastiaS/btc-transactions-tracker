@@ -22,6 +22,7 @@ const consoleMessages = store => next => action => {
 		bitcoinAddressBalance: ${bitcoinAddressInfo.balance}
 		bitcoinAddress: ${bitcoinAddressInfo.address}
 		navbar: ${configState.navBarMenu.activeItem}
+		transactions: ${bitcoinAddressInfo.transactions.length}
 	`)
 
 	console.groupEnd()
@@ -36,7 +37,7 @@ const middleware = [
 	thunk,
 	routerMiddleware(history),
 	dataService,
-	consoleMessages	
+	consoleMessages
 ]
 
 

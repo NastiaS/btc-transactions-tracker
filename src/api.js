@@ -11,9 +11,7 @@ const dataService = store => next => action => {
 	}else{
 		switch (action.type) {
 			case C.GET_BITCOIN_BALANCE:
-					console.log('my url: ', action.meta.url + action.payload + '/transactions?noToken=true')
 					let myUrl = action.meta.url + action.payload + '/transactions?noToken=true';
-
 				return request
 					.get(myUrl)
 					.end((err, res) => {
@@ -23,11 +21,15 @@ const dataService = store => next => action => {
 						}
 						const data = JSON.parse(res.text)
 						// const data = sampleData;
-						let result = processData(data.txs, action.payload)
-						next({ type: C.GET_BALANCE_DATA_RECEIVED, result })
-						next({ type: C.TOGGLE_ADDRESS_FORM })
-
-				})		
+						if(data.txs.length >0) {
+							let result = processData(data.txs, action.payload)
+							next({ type: C.GET_BALANCE_DATA_RECEIVED, result })
+							next({ type: C.TOGGLE_ADDRESS_FORM })
+						}else {
+							let payload = { '_id': uniqid(), 'type': 'error', 'entity': 'getBalance', 'message': 'We are sorry! There was a problem with the given address' };
+							return addNotificationFunc(next, payload)
+						}
+				})
 			default:
 			break
 		}
